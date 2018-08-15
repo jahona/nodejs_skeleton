@@ -6,7 +6,7 @@ const env = require("./config/environment");
 
 var app = express();
 
-mongoose.connect("mongodb://localhost:27017/" + env.database);
+mongoose.connect("mongodb://localhost:27017/" + env.mongodb.database);
 
 const db = mongoose.connection;
 db.on("error", function() {
