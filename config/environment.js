@@ -1,7 +1,8 @@
 var environments = {
   development: {
     port: 8888,
-    database: "nodejs_dev"
+    database: "nodejs_dev",
+    jwt_secret: "secret-key"
   }
 };
 
