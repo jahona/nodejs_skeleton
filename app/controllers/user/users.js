@@ -10,9 +10,11 @@ module.exports = {
   },
 
   createUser: async (req, res, next) => {
+    const { body } = req.value;
+
     let user;
 
-    user = await User.findOne({ userId: req.body.userId });
+    user = await User.findOne({ userId: body.userId });
 
     if (user) {
       return res.status(409).json({
@@ -21,7 +23,7 @@ module.exports = {
       });
     }
 
-    const newUser = new User(req.body);
+    const newUser = new User(body);
 
     user = await newUser.save();
 
@@ -29,7 +31,7 @@ module.exports = {
   },
 
   getUser: async (req, res, next) => {
-    const { uid } = req.params;
+    const { uid } = req.value.params;
 
     const user = await User.findById(uid, { userPw: false });
 
@@ -46,9 +48,10 @@ module.exports = {
   },
 
   updateUser: async (req, res, next) => {
-    const { uid } = req.params;
+    const { uid } = req.value.params;
+    const { body } = req.value;
 
-    const user = await User.findByIdAndUpdate(uid, req.body, {
+    const user = await User.findByIdAndUpdate(uid, body, {
       new: true
     }).select("-userPw");
 
@@ -65,7 +68,7 @@ module.exports = {
   },
 
   deleteUser: async (req, res, next) => {
-    const { uid } = req.params;
+    const { uid } = req.value.params;
 
     const user = await User.findById(uid);
     if (!user) {

@@ -31,12 +31,15 @@ const userOptionalSchema = Joi.object().keys({
 router
   .route("/")
   .get(UsersController.getUserList)
-  .post(UsersController.createUser);
+  .post(validateBody(userSchema), UsersController.createUser);
 
 router
   .route("/:uid")
-  .get(UsersController.getUser)
-  .put(UsersController.updateUser)
-  .delete(UsersController.deleteUser);
+  .get(validateParam(schemas.idSchema, "uid"), UsersController.getUser)
+  .put(
+    [validateParam(schemas.idSchema, "uid"), validateBody(userOptionalSchema)],
+    UsersController.updateUser
+  )
+  .delete(validateParam(schemas.idSchema, "uid"), UsersController.deleteUser);
 
 module.exports = router;
