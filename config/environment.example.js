@@ -14,7 +14,7 @@ var environments = {
   }
 };
 
-var nodeEnv = process.env.NODE_ENV || "development";
+var nodeEnv = process.argv[2] || "development";
 
 console.log("This Mode is", nodeEnv, "Mode");
 
