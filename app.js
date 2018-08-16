@@ -3,9 +3,16 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const env = require("./config/environment");
+const mysql = require("mysql");
 
 var app = express();
 
+// view
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs");
+app.engine("html", require("ejs").renderFile);
+
+// mongodb
 mongoose.connect("mongodb://localhost:27017/" + env.mongodb.database);
 
 const db = mongoose.connection;
@@ -15,6 +22,18 @@ db.on("error", function() {
 db.once("open", function() {
   console.log("Connected!");
 });
+
+/*
+// mysql
+var db = mysql.createConnection({
+  host: env.mysql.host,
+  user: env.mysql.user,
+  password: env.mysql.password,
+  database: env.mysql.database
+});
+
+db.connect();
+*/
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
