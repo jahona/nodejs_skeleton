@@ -7,9 +7,26 @@ const User = require("../../models/user");
 module.exports = {
   // TODO: 한번에 몇개의 데이터를 보내줄것인지.
   getChatList: async (req, res, next) => {
-    const chats = await Chat.find({});
+    let { page, limit } = req.params;
 
-    res.status(200).json(chats);
+    if (!page) page = 1;
+    if (!limit) limit = 10;
+
+    let chats = [];
+    let pages;
+
+    await Chat.paginate({}, { page: page, limit: limit }, function(
+      err,
+      result
+    ) {
+      chats = result.docs;
+      pages = result.pages;
+    });
+
+    res.status(200).json({
+      chats: chats,
+      totalPage: pages
+    });
   },
 
   createChat: async (req, res, next) => {

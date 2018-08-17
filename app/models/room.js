@@ -1,6 +1,7 @@
 "use strict";
 
 const mongoose = require("mongoose");
+const mongoosePaginate = require("mongoose-paginate");
 
 const Schema = mongoose.Schema;
 
@@ -18,5 +19,7 @@ const roomSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
+
+roomSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model("room", roomSchema);

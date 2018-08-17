@@ -4,9 +4,26 @@ const User = require("../../models/user");
 
 module.exports = {
   getUserList: async (req, res, next) => {
-    const users = await User.find({}).select("-userPw");
+    let { page, limit } = req.params;
 
-    res.status(200).json(users);
+    if (!page) page = 1;
+    if (!limit) limit = 10;
+
+    let users = [];
+    let pages;
+
+    await User.paginate({}, { page: page, limit: limit }, function(
+      err,
+      result
+    ) {
+      users = result.docs;
+      pages = result.pages;
+    });
+
+    res.status(200).json({
+      users: users,
+      totalPage: pages
+    });
   },
 
   createUser: async (req, res, next) => {

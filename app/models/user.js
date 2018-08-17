@@ -1,6 +1,7 @@
 "use strict";
 
 const mongoose = require("mongoose");
+const mongoosePaginate = require("mongoose-paginate");
 
 const Schema = mongoose.Schema;
 
@@ -15,5 +16,7 @@ const userSchema = new Schema({
 userSchema.methods.verifyPassword = function(userPw) {
   return this.userPw === userPw;
 };
+
+userSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model("user", userSchema);

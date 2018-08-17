@@ -1,6 +1,7 @@
 "use strict";
 
 const mongoose = require("mongoose");
+const mongoosePaginate = require("mongoose-paginate");
 
 const Schema = mongoose.Schema;
 
@@ -11,5 +12,7 @@ const chatSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
+
+chatSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model("chat", chatSchema);

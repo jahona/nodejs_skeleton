@@ -4,12 +4,28 @@ const Room = require("../../models/room");
 const User = require("../../models/user");
 
 module.exports = {
-  // TODO: pagingnation
   // TODO: 자신이 들어가있지 않은 방만 필터해서 출력
   getRoomList: async (req, res, next) => {
-    const rooms = await Room.find({});
+    let { page, limit } = req.params;
 
-    res.status(200).json(rooms);
+    if (!page) page = 1;
+    if (!limit) limit = 10;
+
+    let rooms = [];
+    let pages;
+
+    await Room.paginate({}, { page: page, limit: limit }, function(
+      err,
+      result
+    ) {
+      rooms = result.docs;
+      pages = result.pages;
+    });
+
+    res.status(200).json({
+      rooms: rooms,
+      totalPage: pages
+    });
   },
 
   createRoom: async (req, res, next) => {
