@@ -67,6 +67,7 @@ app.get("/", (req, res, next) => {
 
 app.use("/users", require("./app/routes/users.js"));
 app.use("/auth", require("./app/routes/auth.js"));
+app.use("/rooms", require("./app/routes/rooms.js"));
 
 // Catch 404 Errors and forward them to error handler
 app.use((req, res, next) => {

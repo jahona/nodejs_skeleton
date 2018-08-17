@@ -64,6 +64,8 @@ module.exports = {
       });
     }
 
+    user.updatedAt = Date.now();
+
     res.status(200).json(user);
   },
 

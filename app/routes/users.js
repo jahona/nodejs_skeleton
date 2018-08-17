@@ -19,12 +19,12 @@ const {
 const userSchema = Joi.object().keys({
   userId: Joi.string().required(),
   userPw: Joi.string().required(),
-  userName: Joi.string()
+  nickname: Joi.string()
 });
 
 const userOptionalSchema = Joi.object().keys({
   userPw: Joi.string(),
-  userName: Joi.string()
+  nickname: Joi.string()
 });
 
 // routers

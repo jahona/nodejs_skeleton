@@ -33,8 +33,7 @@ module.exports = {
 
     const token = await jwt.sign(
       {
-        _id: user._id,
-        permission: user.permission
+        _id: user._id
       },
       env.jwt_secret,
       {
