@@ -14,7 +14,9 @@ const roomSchema = new Schema({
   ],
   owner_id: { type: Schema.Types.ObjectId, required: true },
   isParticiable: { type: Boolean, default: true },
-  maximumPeople: { type: Number, default: 2 }
+  maximumPeople: { type: Number, default: 2 },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model("room", roomSchema);

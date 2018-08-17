@@ -4,6 +4,8 @@ const Room = require("../../models/room");
 const User = require("../../models/user");
 
 module.exports = {
+  // TODO: pagingnation
+  // TODO: 자신이 들어가있지 않은 방만 필터해서 출력
   getRoomList: async (req, res, next) => {
     const rooms = await Room.find({});
 
@@ -79,6 +81,7 @@ module.exports = {
     }
 
     room.updatedAt = Date.now();
+    await room.save();
 
     res.status(200).json(room);
   },
@@ -96,6 +99,7 @@ module.exports = {
       });
     }
 
+    const user = await User.findById(req.decoded._id);
     if (!room.owner_id.equals(user._id)) {
       return res.status(403).json({
         error: "permission-denied",
