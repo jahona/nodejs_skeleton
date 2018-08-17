@@ -1,8 +1,39 @@
 <html>
   <head>
-    <link rel="stylesheet" href="/css/rooms.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   </head>
   <body>
+    <header>
+      <div class="header">
+      </div>
+    </header>
+    <main>
+      <div class="rooms">
+        <div class="rooms__form">
+          <div class="rooms__form-title">
+            <span>채팅방 리스트</span>
+          </div>
+          <section class="rooms__section">
+            <div class="rooms__section-list">
+              <ul id="roomList">
+              </ul>
+            </div>
+            <div class="room-btn--add">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+            <div class="room-btn--enter">
+              <button class="btn" id="roomEnterBtn">입장</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <nav>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/rooms.js"></script>
   </body>
 </html>
