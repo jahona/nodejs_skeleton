@@ -1,7 +1,9 @@
 .login {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
+  height: 100%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+  width: 60%;
 }
 .login__form {
   background: #ffffff;

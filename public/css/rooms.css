@@ -1,15 +1,16 @@
 .rooms {
-  width: 360px;
   height: 100%;
-  padding: 8% 0 0;
-  margin: auto;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+  width: 60%;
 }
 .rooms__form {
   position: relative;
   z-index: 1;
   background: #ffffff;
   max-width: 360px;
-  height: 90%;
+  height: 730px;
   margin: auto;
   padding: 20px;
   text-align: center;
@@ -19,6 +20,8 @@
   text-align: center;
   padding: 10px;
   font-size: 30px;
+}
+.room-btn--enter {
 }
 .room-btn--enter button {
   font-family: "Roboto", sans-serif;
@@ -30,13 +33,10 @@
   padding: 15px;
   color: #ffffff;
   font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
   cursor: pointer;
 }
 .rooms__section-list {
-  height: 640px;
-  margin-bottom: 10px;
+  height: 600px;
   font-size: 22px;
 }
 .rooms__section .rooms__section-list ul {
